@@ -1,7 +1,7 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import Modal from './components/Modal.vue';
-import TheWelcome from './components/TheWelcome.vue'
+  import HelloWorld from './components/HelloWorld.vue'
+  import Modal from './components/Modal.vue'
+  import TheWelcome from './components/TheWelcome.vue'
 </script>
 
 <template>
@@ -10,7 +10,7 @@ import TheWelcome from './components/TheWelcome.vue'
 
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
-      <Modal></Modal>
+      <Modal></Modal> <!-- Should be only one -->
     </div>
   </header>
 
