@@ -2,6 +2,28 @@
   import HelloWorld from './components/HelloWorld.vue'
   import Modal from './components/Modal.vue'
   import TheWelcome from './components/TheWelcome.vue'
+  import { useModalStore } from './stores/modal'
+
+  const modalStore = useModalStore();
+  const { openModal, setOnConfirm } = modalStore;
+
+  const openModalWithoutAsync = () => {
+    openModal();
+  }
+
+  const openModalWithAsync = () => {
+    openModal({
+      headerText: 'Are you sure you want to fetch SW Info?',
+      confirmText: 'Yes',
+      onConfirm: callStarWarsApi
+    })
+  }
+
+  const callStarWarsApi = async () => {
+    const httpResponse = await fetch("https://swapi.dev/api/people/1");
+    const jsonResponse = await httpResponse.json();
+    console.log(jsonResponse);
+  }
 </script>
 
 <template>
@@ -10,12 +32,14 @@
 
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
-      <Modal></Modal> <!-- Should be only one -->
     </div>
   </header>
 
   <main>
     <TheWelcome />
+    <Modal></Modal> <!-- Should be only one -->
+    <button @click.prevent="openModalWithoutAsync">Open Modal without Async</button>
+    <button @click.prevent="openModalWithAsync">Open Modal with Async</button>
   </main>
 </template>
 
