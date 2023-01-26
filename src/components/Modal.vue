@@ -9,10 +9,12 @@
 
 <template>
   <div class="modal" v-if="showModal">
-    <h2>{{ headerText }}</h2>
-    <div class="buttons">
-      <button @click.prevent="hideModal">{{ cancelText }}</button>
-      <button @click.prevent="confirmModal">{{ confirmText }}</button>
+    <div class="content">
+      <h2>{{ headerText }}</h2>
+      <div class="buttons">
+        <button @click.prevent="hideModal" class="cancel">{{ cancelText }}</button>
+        <button @click.prevent="confirmModal" class="confirm">{{ confirmText }}</button>
+      </div>
     </div>
   </div>
 </template>
